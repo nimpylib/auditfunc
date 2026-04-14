@@ -17,7 +17,8 @@ proc cb(name: string, args: varargs[Any]) =
   mycheck args[1].getString == "hi"
 
 test "test1":
-  addaudithook(cb)
+  when not defined(js):
+    addaudithook(cb)
 
   audit(Name, 1, "hi")
 
